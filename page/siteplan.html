@@ -31,11 +31,11 @@
     </style>
   </head>
   <body>
-    <h1>Update Siteplane Harmoni Horizon Valley</h1>
+    <h1>Image Viewer and Downloader</h1>
     <div class="image-container" id="image-container">
       <img
         id="displayed-image"
-        src="../assets/img/siteplan_HHV.jpg"
+        src="https://via.placeholder.com/500"
         alt="Example Image"
       />
     </div>
@@ -50,24 +50,27 @@
           const image = document.getElementById("displayed-image");
           const link = document.createElement("a");
           link.href = image.src;
-          link.download = "downloaded-SiteplaneHHV.jpg";
+          link.download = "downloaded-image.jpg";
           link.click();
         });
 
-      // Download image as a PDF
+      // Download image as a high-resolution PDF
       document
         .getElementById("download-pdf")
         .addEventListener("click", async () => {
           const container = document.getElementById("image-container");
-          const canvas = await html2canvas(container);
-          const imgData = canvas.toDataURL("image/jpeg");
+          const canvas = await html2canvas(container, { scale: 3 }); // Increase scale for higher resolution
+          const imgData = canvas.toDataURL("image/jpeg", 1.0); // Use maximum quality
 
           const { jsPDF } = window.jspdf;
-          const pdf = new jsPDF();
+          const pdf = new jsPDF({
+            unit: "px",
+            format: [canvas.width, canvas.height],
+          });
 
-          // Add the image to the PDF
-          pdf.addImage(imgData, "JPEG", 10, 10, 190, 0); // Adjust dimensions as needed
-          pdf.save("image.pdf");
+          // Add the image to the PDF with exact dimensions
+          pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
+          pdf.save("high-resolution-image.pdf");
         });
     </script>
   </body>
