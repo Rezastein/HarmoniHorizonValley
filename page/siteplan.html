@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Viewer and Downloader</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin: 20px;
+      }
+      .image-container {
+        margin: 20px auto;
+        width: 80%;
+        max-width: 500px;
+      }
+      img {
+        width: 100%;
+        height: auto;
+        border: 1px solid #ccc;
+      }
+      button {
+        margin: 10px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Update Siteplane Harmoni Horizon Valley</h1>
+    <div class="image-container" id="image-container">
+      <img
+        id="displayed-image"
+        src="../assets/img/siteplan_HHV.jpg"
+        alt="Example Image"
+      />
+    </div>
+    <button id="download-image">Download Image</button>
+    <button id="download-pdf">Download as PDF</button>
+
+    <script>
+      // Download image as a file
+      document
+        .getElementById("download-image")
+        .addEventListener("click", () => {
+          const image = document.getElementById("displayed-image");
+          const link = document.createElement("a");
+          link.href = image.src;
+          link.download = "downloaded-SiteplaneHHV.jpg";
+          link.click();
+        });
+
+      // Download image as a PDF
+      document
+        .getElementById("download-pdf")
+        .addEventListener("click", async () => {
+          const container = document.getElementById("image-container");
+          const canvas = await html2canvas(container);
+          const imgData = canvas.toDataURL("image/jpeg");
+
+          const { jsPDF } = window.jspdf;
+          const pdf = new jsPDF();
+
+          // Add the image to the PDF
+          pdf.addImage(imgData, "JPEG", 10, 10, 190, 0); // Adjust dimensions as needed
+          pdf.save("image.pdf");
+        });
+    </script>
+  </body>
+</html>
