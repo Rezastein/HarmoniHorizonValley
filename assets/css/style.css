@@ -108,6 +108,45 @@ body {
   transform: rotate(-45deg) translate(5px, -5px);
 }
 
+.main-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  padding: 20px;
+  background-color: #000000;
+}
+.section {
+  text-align: center;
+  padding: 20px;
+  background: rgb(0, 0, 0);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  width: 30%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+}
+.section-icon {
+  font-size: 40px;
+  color: #007bff;
+  size: 40px;
+  margin-bottom: 10px;
+}
+.section-icon img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.section-description {
+  font-size: 14px;
+  color: #ffffff;
+}
+
 /* hero section */
 .hero {
   min-height: 100vh;
@@ -244,6 +283,9 @@ footer .credit a {
   html {
     font-size: 62.5%;
   }
+  .section {
+    width: 45%;
+  }
   #hamburger-menu {
     display: inline-block;
   }
@@ -279,6 +321,10 @@ footer .credit a {
   html {
     font-size: 55%;
   }
+  .section {
+    width: 100%;
+  }
+
   .card {
     width: 100%;
   }

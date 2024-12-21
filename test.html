@@ -3,120 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Responsive Hamburger Menu</title>
+    <title>Three Horizontal Sections</title>
     <style>
       body {
         font-family: Arial, sans-serif;
         margin: 0;
         padding: 0;
       }
-
-      .navbar {
+      .main-section {
         display: flex;
-        justify-content: space-between;
+        flex-wrap: wrap;
+        justify-content: space-around;
         align-items: center;
-        background-color: #333;
-        padding: 10px 20px;
+        padding: 20px;
+        background-color: #f4f4f4;
       }
-
-      .navbar h1 {
-        color: white;
-        margin: 0;
-        font-size: 1.5rem;
+      .section {
+        text-align: center;
+        padding: 20px;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        width: 30%;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        margin: 10px;
       }
-
-      .menu {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: none;
-        flex-direction: column;
+      .section-icon {
+        font-size: 40px;
+        color: #007bff;
+        margin-bottom: 10px;
       }
-
-      .menu li {
-        margin: 10px 0;
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 10px;
       }
-
-      .menu a {
-        text-decoration: none;
-        color: white;
-        font-size: 1.2rem;
-        transition: color 0.3s;
+      .section-description {
+        font-size: 14px;
+        color: #555;
       }
-
-      .menu a:hover {
-        color: #00bcd4;
-      }
-
-      .hamburger {
-        display: flex;
-        flex-direction: column;
-        cursor: pointer;
-      }
-
-      .hamburger div {
-        width: 25px;
-        height: 3px;
-        background-color: white;
-        margin: 4px 0;
-        transition: all 0.3s;
-      }
-
-      .hamburger.active div:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 5px);
-      }
-
-      .hamburger.active div:nth-child(2) {
-        opacity: 0;
-      }
-
-      .hamburger.active div:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -5px);
-      }
-
-      @media (min-width: 768px) {
-        .menu {
-          display: flex;
-          flex-direction: row;
-        }
-
-        .hamburger {
-          display: none;
-        }
-
-        .menu li {
-          margin: 0 15px;
+      @media (max-width: 768px) {
+        .section {
+          width: 45%;
         }
       }
-
-      .menu.show {
-        display: flex;
+      @media (max-width: 480px) {
+        .section {
+          width: 100%;
+        }
       }
     </style>
   </head>
   <body>
-    <nav class="navbar">
-      <h1>Logo</h1>
-      <div class="hamburger" id="hamburger">
-        <div></div>
-        <div></div>
-        <div></div>
+    <div class="main-section">
+      <div class="section">
+        <div class="section-icon">
+          <img src="assets/img/icon/safety.png" alt="Icon 1" />
+        </div>
+        <div class="section-title">Title 1</div>
+        <div class="section-description">
+          This is a description for the first section. It explains the content
+          briefly.
+        </div>
       </div>
-      <ul class="menu" id="menu">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-
-    <script>
-      const hamburger = document.getElementById("hamburger");
-      const menu = document.getElementById("menu");
-
-      hamburger.addEventListener("click", () => {
-        hamburger.classList.toggle("active");
-        menu.classList.toggle("show");
-      });
-    </script>
+      <div class="section">
+        <div class="section-icon">🚀</div>
+        <div class="section-title">Title 2</div>
+        <div class="section-description">
+          This is a description for the second section. It highlights key
+          features.
+        </div>
+      </div>
+      <div class="section">
+        <div class="section-icon">💡</div>
+        <div class="section-title">Title 3</div>
+        <div class="section-description">
+          This is a description for the third section. It provides additional
+          insights.
+        </div>
+      </div>
+    </div>
   </body>
 </html>
