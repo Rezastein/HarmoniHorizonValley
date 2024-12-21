@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Hamburger Menu</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 20px;
+      }
+
+      .navbar h1 {
+        color: white;
+        margin: 0;
+        font-size: 1.5rem;
+      }
+
+      .menu {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: none;
+        flex-direction: column;
+      }
+
+      .menu li {
+        margin: 10px 0;
+      }
+
+      .menu a {
+        text-decoration: none;
+        color: white;
+        font-size: 1.2rem;
+        transition: color 0.3s;
+      }
+
+      .menu a:hover {
+        color: #00bcd4;
+      }
+
+      .hamburger {
+        display: flex;
+        flex-direction: column;
+        cursor: pointer;
+      }
+
+      .hamburger div {
+        width: 25px;
+        height: 3px;
+        background-color: white;
+        margin: 4px 0;
+        transition: all 0.3s;
+      }
+
+      .hamburger.active div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+
+      .hamburger.active div:nth-child(2) {
+        opacity: 0;
+      }
+
+      .hamburger.active div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+
+      @media (min-width: 768px) {
+        .menu {
+          display: flex;
+          flex-direction: row;
+        }
+
+        .hamburger {
+          display: none;
+        }
+
+        .menu li {
+          margin: 0 15px;
+        }
+      }
+
+      .menu.show {
+        display: flex;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="navbar">
+      <h1>Logo</h1>
+      <div class="hamburger" id="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <ul class="menu" id="menu">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+
+    <script>
+      const hamburger = document.getElementById("hamburger");
+      const menu = document.getElementById("menu");
+
+      hamburger.addEventListener("click", () => {
+        hamburger.classList.toggle("active");
+        menu.classList.toggle("show");
+      });
+    </script>
+  </body>
+</html>

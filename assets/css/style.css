@@ -59,6 +59,54 @@ body {
 .navbar .navbar-nav a:hover::after {
   transform: scaleX(0.5);
 }
+.menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+  flex-direction: column;
+}
+
+.menu li {
+  margin: 10px 0;
+}
+
+.menu a {
+  text-decoration: none;
+  color: white;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.menu a:hover {
+  color: #00bcd4;
+}
+
+.hamburger {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.hamburger div {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  margin: 4px 0;
+  transition: all 0.3s;
+}
+
+.hamburger.active div:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active div:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active div:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
 
 /* hero section */
 .hero {
@@ -224,43 +272,6 @@ footer .credit a {
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
   }
-  .navbar .search-form {
-    width: 90%;
-    right: 2rem;
-  }
-  .about .row {
-    flex-wrap: wrap;
-  }
-  .about .row .about-img img {
-    height: 24rem;
-    object-fit: cover;
-    object-position: center;
-  }
-  .about .row .content {
-    padding: 0;
-  }
-  .about .row .content h3 {
-    margin-top: 1rem;
-    font-size: 2rem;
-  }
-  .about .row .content p {
-    font-size: 1.6rem;
-  }
-  .menu p {
-    font-size: 1.2rem;
-  }
-  .contact .row {
-    flex-wrap: wrap;
-  }
-  .contact .row .maps {
-    height: 30rem;
-  }
-  .contact .row form {
-    padding-top: 0;
-  }
-  .modal-content {
-    flex-wrap: wrap;
-  }
 }
 
 /* Mobile Phone */
@@ -271,4 +282,19 @@ footer .credit a {
   .card {
     width: 100%;
   }
+  .menu {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .hamburger {
+    display: none;
+  }
+
+  .menu li {
+    margin: 0 15px;
+  }
+}
+.menu.show {
+  display: flex;
 }
