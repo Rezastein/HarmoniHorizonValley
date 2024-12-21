@@ -352,6 +352,35 @@ body {
   background-color: #a71d2a;
 }
 
+.pl img {
+  padding: 2rem;
+  max-width: 100%;
+  align-items: center;
+}
+
+.include-item {
+  max-width: 100%;
+  margin-top: 30px;
+  padding: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+.include-item h3 {
+  font-size: 40px;
+  color: #2e7d32;
+}
+
+.card-include {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 800px;
+  text-align: center;
+  overflow: hidden;
+}
+
 /* footer */
 footer {
   background-color: var(--primary);
@@ -427,6 +456,9 @@ footer .credit a {
   .navbar .navbar-nav a:hover::after {
     transform: scaleX(0.2);
   }
+  .include-item h3 {
+    font-size: 20px;
+  }
 }
 
 /* Mobile Phone */
@@ -452,6 +484,9 @@ footer .credit a {
 
   .menu li {
     margin: 0 15px;
+  }
+  .include-item h3 {
+    font-size: 15px;
   }
 }
 .menu.show {
