@@ -9,13 +9,35 @@
     <style>
       body {
         font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333;
+        padding: 10px 0;
+      }
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+      .navbar a:hover {
+        text-decoration: underline;
+      }
+      h1 {
         text-align: center;
-        margin: 20px;
+        margin: 20px 0;
       }
       .image-container {
         margin: 20px auto;
-        width: 80%;
-        max-width: 500px;
+        width: 90%;
+        max-width: 5000px;
+        text-align: center;
       }
       img {
         width: 100%;
@@ -28,10 +50,36 @@
         font-size: 16px;
         cursor: pointer;
       }
+      @media (max-width: 768px) {
+        .navbar a {
+          font-size: 16px;
+          margin: 0 10px;
+        }
+        button {
+          font-size: 14px;
+          padding: 8px 16px;
+        }
+      }
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 20px;
+        }
+        .navbar a {
+          font-size: 14px;
+          margin: 0 5px;
+        }
+        button {
+          font-size: 12px;
+          padding: 6px 12px;
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>Update Siteplan Harmoni Horizon Valley</h1>
+    <div class="navbar">
+      <a href="../index.html">Home</a>
+    </div>
+    <h1>Update Siteplan</h1>
     <div class="image-container" id="image-container">
       <img
         id="displayed-image"
@@ -50,7 +98,7 @@
           const image = document.getElementById("displayed-image");
           const link = document.createElement("a");
           link.href = image.src;
-          link.download = "downloaded-SiteplanHHV.jpg";
+          link.download = "downloaded-image.jpg";
           link.click();
         });
 
@@ -69,7 +117,7 @@
           });
 
           // Add the image to the PDF with exact dimensions
-          pdf.addImage(imgData, "JPEG", 0, 0, canvas.width, canvas.height);
+          pdf.addImage(imgData, "JPEG", 0, 0, 3000, 4242.86);
           pdf.save("high-resolution-image.pdf");
         });
     </script>
