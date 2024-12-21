@@ -19,6 +19,7 @@ body {
   background-color: var(--bg);
   color: #fff;
 }
+
 /* Navbar */
 .navbar {
   display: flex;
@@ -82,6 +83,7 @@ body {
     rgba(255, 255, 255, 0) 50%
   );
 }
+
 .hero .content {
   padding: 1rem 7%;
   max-width: 60rem;
@@ -102,6 +104,18 @@ body {
   font-weight: 100;
   text-shadow: 1px 1px 3px rgba(1, 1, 3, 0.5);
   mix-blend-mode: difference;
+}
+.deskrip h3 {
+  text-align: center;
+  color: #2e7d32;
+  margin-bottom: 20px;
+  font-size: 30px;
+}
+.deskrip p {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+  font-size: 20px;
 }
 
 .h2keunggulan h2 {
