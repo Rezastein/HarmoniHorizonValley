@@ -1,11 +1,69 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Coming Soon</title>
+    <title>Input Form with Firebase</title>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.17.2/firebase-database.js"></script>
   </head>
   <body>
-    <h1>COMING SOON</h1>
+    <h1>Input Form</h1>
+    <form id="inputForm">
+      <div id="inputsContainer"></div>
+      <button type="button" onclick="submitData()">Submit</button>
+    </form>
+
+    <script>
+      // Firebase configuration
+      const firebaseConfig = {
+        apiKey: "YOUR_API_KEY",
+        authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+        databaseURL: "https://YOUR_PROJECT_ID.firebaseio.com",
+        projectId: "YOUR_PROJECT_ID",
+        storageBucket: "YOUR_PROJECT_ID.appspot.com",
+        messagingSenderId: "YOUR_SENDER_ID",
+        appId: "YOUR_APP_ID",
+      };
+
+      // Initialize Firebase
+      const app = firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      // Generate 7 input fields with auto-incrementing IDs
+      const inputsContainer = document.getElementById("inputsContainer");
+      for (let i = 1; i <= 7; i++) {
+        const input = document.createElement("input");
+        input.type = "text";
+        input.id = `input${i}`;
+        input.placeholder = `Input ${i}`;
+        inputsContainer.appendChild(input);
+        inputsContainer.appendChild(document.createElement("br"));
+      }
+
+      // Function to submit data to Firebase
+      function submitData() {
+        const data = {};
+
+        for (let i = 1; i <= 7; i++) {
+          const value = document.getElementById(`input${i}`).value;
+          if (value) {
+            data[`input${i}`] = value;
+          }
+        }
+
+        const timestamp = Date.now(); // Use timestamp as a unique key
+        firebase
+          .database()
+          .ref("inputs/" + timestamp)
+          .set(data)
+          .then(() => {
+            alert("Data successfully submitted!");
+          })
+          .catch((error) => {
+            console.error("Error submitting data:", error);
+          });
+      }
+    </script>
   </body>
-</html>
+</html> -->
