@@ -495,8 +495,8 @@ footer .credit a {
     font-size: 20px;
   }
   .i-frame {
-    width: 45%;
-    height: 70vh;
+    width: 35%;
+    height: 75vh;
   }
 }
 
@@ -532,7 +532,7 @@ footer .credit a {
   }
   .i-frame {
     width: 25%;
-    height: 30vh;
+    height: 40vh;
   }
 }
 .menu.show {
