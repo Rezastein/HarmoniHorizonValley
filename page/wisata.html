@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aesthetic Photo Collage</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background: #000000;
+      }
+
+      .collage {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(3, auto);
+        gap: 10px;
+        width: 90%;
+        max-width: 800px;
+      }
+
+      .collage .photo {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+        transition: transform 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .collage .photo:hover {
+        transform: scale(1.05);
+      }
+
+      .collage .photo img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 10px;
+      }
+
+      .collage .photo span {
+        margin-top: 5px;
+        font-size: 14px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+      }
+
+      .collage .photo:nth-child(2) {
+        grid-column: span 2;
+      }
+
+      .collage .photo:nth-child(5) {
+        grid-column: span 2;
+      }
+
+      .collage .photo:nth-child(7) {
+        grid-row: span 2;
+      }
+
+      .collage .photo:nth-child(11) {
+        grid-column: span 2;
+      }
+
+      @media (max-width: 768px) {
+        .collage {
+          grid-template-columns: repeat(2, 1fr);
+          grid-template-rows: auto;
+        }
+
+        .collage .photo:nth-child(2),
+        .collage .photo:nth-child(5),
+        .collage .photo:nth-child(11) {
+          grid-column: span 1;
+        }
+
+        .collage .photo:nth-child(7) {
+          grid-row: span 1;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .collage {
+          grid-template-columns: 1fr;
+          gap: 5px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="collage">
+      <div class="photo">
+        <img src="../assets/img/wisata/wcc.jpg" alt="Photo 1" />
+        <span>Wisata Curug Citiis</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wcn.jpg" alt="Photo 2" />
+        <span>Wisata Curug Niagara</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wkc.jpg" alt="Photo 3" />
+        <span>Wisata Kidemang Caffe</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wsc.jpg" alt="Photo 4" />
+        <span>Wisata Sungai Cipamingkis</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wvn.jpg" alt="Photo 5" />
+        <span>Wisata Villa Naga Jonggol</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wvgb.jpg" alt="Photo 6" />
+        <span>Wisata Villa Gunung Batu</span>
+      </div>
+      <div class="photo">
+        <img src="../assets/img/wisata/wvk.jpg" alt="Photo 7" />
+        <span>Wisata Villa Khayangan</span>
+      </div>
+    </div>
+  </body>
+</html>
