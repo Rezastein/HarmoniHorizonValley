@@ -162,6 +162,28 @@ body {
   margin-bottom: 20px;
   font-size: 20px;
 }
+
+.section-playlist-yt {
+  padding: 20px;
+  text-align: center;
+}
+video-container-yt {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  gap: 15px;
+  padding: 10px 0;
+}
+
+.video-container-yt iframe {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  width: 300px;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+}
+
 .h2keunggulan h2 {
   text-align: center;
   color: #2db634;
@@ -501,6 +523,10 @@ footer .credit a {
   .i-frame {
     flex-direction: column;
   }
+  .video-container-yt iframe {
+    width: 250px;
+    height: 150px;
+  }
 }
 
 /* Mobile Phone */
@@ -539,4 +565,8 @@ footer .credit a {
 }
 .menu.show {
   display: flex;
+}
+.video-container-yt iframe {
+  width: 200px;
+  height: 120px;
 }
