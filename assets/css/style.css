@@ -178,8 +178,8 @@ video-container-yt {
 .video-container-yt iframe {
   scroll-snap-align: start;
   flex: 0 0 auto;
-  width: 300px;
-  height: 200px;
+  width: 500px;
+  height: 400px;
   border: none;
   border-radius: 10px;
 }
