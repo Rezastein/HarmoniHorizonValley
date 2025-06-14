@@ -276,6 +276,14 @@ video-container-yt {
   padding: 10px;
   font-size: 20px;
 }
+.surat {
+  padding: 50px;
+  margin: 0 10px;
+}
+.surat h4,
+p {
+  font-size: 2rem;
+}
 .container-button {
   display: flex;
   flex-wrap: wrap;
@@ -527,6 +535,9 @@ footer .credit a {
     width: 250px;
     height: 150px;
   }
+  .h2keunggulan h2 {
+    font-size: 30px;
+  }
 }
 
 /* Mobile Phone */
@@ -561,6 +572,9 @@ footer .credit a {
   }
   .i-frame {
     flex-direction: column;
+  }
+  .h2keunggulan h2 {
+    font-size: 20px;
   }
 }
 .menu.show {
