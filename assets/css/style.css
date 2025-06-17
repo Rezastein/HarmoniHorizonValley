@@ -247,6 +247,9 @@ video-container-yt {
   margin-bottom: 10px;
   color: #2db634;
 }
+.list-content p {
+  font-size: 1rem;
+}
 .list-description {
   color: #ffffff;
 }
@@ -511,107 +514,129 @@ footer .credit a {
   font-weight: 700;
 }
 
-/* laptop */
-@media (max-width: 1366px) {
-  html {
-    font-size: 75%;
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 1200px) {
+  .hero .content h1 {
+    font-size: 4em;
+  }
+  .card-include {
+    width: 100%;
+    padding: 1rem;
   }
 }
-/* tables */
-@media (max-width: 758px) {
-  html {
-    font-size: 62.5%;
-  }
+
+@media (max-width: 992px) {
   .section {
     width: 45%;
   }
-  #hamburger-menu {
-    display: inline-block;
+
+  .list-item {
+    flex: 1 1 calc(50% - 20px);
   }
+
+  .video-container-yt iframe {
+    width: 100%;
+    height: auto;
+  }
+
   .navbar .navbar-nav {
+    display: none;
+    flex-direction: column;
+    background: rgba(1, 1, 1, 0.9);
     position: absolute;
     top: 100%;
-    right: -100%;
-    background-color: #fff;
-    width: 30rem;
-    height: 100vh;
-    transition: 0.3s;
-  }
-  .navbar .navbar-nav.active {
     right: 0;
+    width: 200px;
   }
-  .navbar .navbar-nav a {
-    color: var(--bg);
-    display: block;
-    margin: 1.5rem;
-    padding: 0.5rem;
-    font-size: 2rem;
+
+  .navbar .navbar-nav.show {
+    display: flex;
   }
-  .navbar .navbar-nav a::after {
-    transform-origin: 0 0;
-  }
-  .navbar .navbar-nav a:hover::after {
-    transform: scaleX(0.2);
-  }
-  .list-item {
-    flex: 1 1 calc(50% - 20px); /* 2 items per row on smaller screens */
-  }
-  .include-item h3 {
-    font-size: 20px;
-  }
-  .i-frame {
-    flex-direction: column;
-  }
-  .video-container-yt iframe {
-    width: 250px;
-    height: 150px;
-  }
-  .h2keunggulan h2 {
-    font-size: 30px;
+
+  .navbar .hamburger {
+    display: flex;
   }
 }
 
-/* Mobile Phone */
-@media (max-width: 450px) {
-  html {
-    font-size: 55%;
+@media (max-width: 768px) {
+  .hero .content h1 {
+    font-size: 3em;
   }
+
+  .hero .content p {
+    font-size: 1.2em;
+  }
+  .h2keunggulan h2 {
+    font-size: 2rem;
+  }
+
   .section {
     width: 100%;
   }
 
-  .card {
-    width: 100%;
-  }
-  .menu {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .hamburger {
-    display: none;
-  }
-
-  .menu li {
-    margin: 0 15px;
-  }
   .list-item {
-    flex: 1 1 100%; /* 1 item per row on very small screens */
+    flex: 1 1 100%;
   }
+
+  .container-button .aurora,
+  .container-button .serenity,
+  .container-button .alpine {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .include-item {
+    padding: 1rem;
+  }
+
   .include-item h3 {
-    font-size: 15px;
+    font-size: 2rem;
   }
+
   .i-frame {
     flex-direction: column;
+    height: auto;
   }
-  .h2keunggulan h2 {
-    font-size: 20px;
+
+  .onair {
+    grid-template-columns: 1fr;
   }
 }
-.menu.show {
-  display: flex;
-}
-.video-container-yt iframe {
-  width: 200px;
-  height: 120px;
+
+@media (max-width: 576px) {
+  .hero .content h1 {
+    font-size: 2em;
+  }
+
+  .hero .content p {
+    font-size: 1rem;
+  }
+
+  .deskrip h3 {
+    font-size: 16px;
+  }
+
+  .deskrip p {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 1.2rem;
+  }
+
+  .section-description {
+    font-size: 0.9rem;
+  }
+
+  .navbar {
+    padding: 1rem 5%;
+  }
+
+  .popup {
+    width: 90%;
+  }
 }

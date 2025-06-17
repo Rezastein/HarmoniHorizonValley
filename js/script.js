@@ -1,9 +1,9 @@
-const hamburger = document.getElementById("hamburger");
-const menu = document.getElementById("menu");
+const hamburger = document.querySelector(".hamburger");
+const navMenu = document.querySelector(".navbar .navbar-nav");
 
 hamburger.addEventListener("click", () => {
   hamburger.classList.toggle("active");
-  menu.classList.toggle("show");
+  navMenu.classList.toggle("show");
 });
 
 function showPopup(imageSrc) {
