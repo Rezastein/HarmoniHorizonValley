@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Daftar Nama</title>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f0f0;
+        margin: 0;
+        padding: 2rem;
+      }
+      h2 {
+        text-align: center;
+        color: #333;
+      }
+      .table-container {
+        max-width: 800px;
+        margin: auto;
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      }
+      th,
+      td {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        text-align: left;
+      }
+      th {
+        background: #28a745;
+        color: white;
+      }
+      tr:nth-child(even) {
+        background: #f9f9f9;
+      }
+      @media (max-width: 600px) {
+        th,
+        td {
+          font-size: 0.9rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Daftar Data Pengguna</h2>
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Nama</th>
+            <th>Kavling</th>
+          </tr>
+        </thead>
+        <tbody id="dataTable">
+          <tr>
+            <td colspan="3" style="text-align: center">Memuat data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/11.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.9.0/firebase-database-compat.js"></script>
+
+    <script>
+      // Ganti dengan Firebase kamu
+      const firebaseConfig = {
+        apiKey: "AIzaSyBp-gjRuIgRg4r8hi7BGTNXQYgvkNqVIMQ",
+        authDomain: "toolshgi.firebaseapp.com",
+        databaseURL: "https://toolshgi-default-rtdb.firebaseio.com",
+        projectId: "toolshgi",
+        storageBucket: "toolshgi.firebasestorage.app",
+        messagingSenderId: "460824198114",
+        appId: "1:460824198114:web:85bbf8be227011550317bb",
+        measurementId: "G-FCQE589D8K",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      const tableBody = document.getElementById("dataTable");
+
+      db.ref("DATASTAYHHV").once("value", (snapshot) => {
+        const data = snapshot.val();
+        tableBody.innerHTML = "";
+
+        if (!data) {
+          tableBody.innerHTML =
+            "<tr><td colspan='3' style='text-align:center;'>Belum ada data</td></tr>";
+          return;
+        }
+
+        Object.values(data).forEach((item) => {
+          const row = document.createElement("tr");
+          row.innerHTML = `
+          <td>${item.nama}</td>
+          <td>${item.alamat}</td>
+          
+        `;
+          tableBody.appendChild(row);
+        });
+      });
+    </script>
+  </body>
+</html>
