@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Verifikasi PIN & Input Data</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f0f0f0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 1rem;
+        box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+        transition: 0.3s;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 1rem;
+      }
+      input {
+        width: 100%;
+        padding: 0.9rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ccc;
+        border-radius: 0.5rem;
+        font-size: 1rem;
+      }
+      button {
+        width: 100%;
+        padding: 1rem;
+        margin-top: 1rem;
+        background: #28a745;
+        color: white;
+        border: none;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #218838;
+      }
+      #status {
+        text-align: center;
+        margin-top: 1rem;
+        font-weight: bold;
+      }
+      .hidden {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Verifikasi PIN</h2>
+      <input
+        type="password"
+        id="pinInput"
+        placeholder="Masukkan PIN"
+        maxlength="6"
+      />
+      <button onclick="cekPIN()">Verifikasi</button>
+
+      <div id="formData" class="hidden">
+        <input type="text" id="namaInput" placeholder="Nama Lengkap" />
+        <input type="text" id="alamatInput" placeholder="Blok & No Kavling" />
+        <button onclick="kirimData()">Kirim Data</button>
+      </div>
+
+      <div id="status"></div>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/11.9.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/11.9.0/firebase-database-compat.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyBp-gjRuIgRg4r8hi7BGTNXQYgvkNqVIMQ",
+        authDomain: "toolshgi.firebaseapp.com",
+        databaseURL: "https://toolshgi-default-rtdb.firebaseio.com",
+        projectId: "toolshgi",
+        storageBucket: "toolshgi.firebasestorage.app",
+        messagingSenderId: "460824198114",
+        appId: "1:460824198114:web:85bbf8be227011550317bb",
+        measurementId: "G-FCQE589D8K",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+      const db = firebase.database();
+
+      let pinTervalidasi = "";
+
+      function cekPIN() {
+        const pinUser = document.getElementById("pinInput").value;
+        const status = document.getElementById("status");
+        const formData = document.getElementById("formData");
+
+        if (!pinUser) {
+          status.style.color = "orange";
+          status.innerText = "⚠️ PIN tidak boleh kosong.";
+          return;
+        }
+
+        db.ref("VILLA VERIFY").once("PINS1", (snapshot) => {
+          const pins = snapshot.val();
+          let cocok = false;
+
+          for (let user in pins) {
+            if (pins[user].value === pinUser) {
+              cocok = true;
+              pinTervalidasi = pinUser;
+              break;
+            }
+          }
+
+          if (cocok) {
+            status.style.color = "green";
+            status.innerText = "✅ PIN valid. Silakan isi data.";
+            formData.classList.remove("hidden");
+          } else {
+            status.style.color = "red";
+            status.innerText = "❌ PIN salah!";
+            formData.classList.add("hidden");
+          }
+        });
+      }
+
+      function kirimData() {
+        const nama = document.getElementById("namaInput").value;
+        const alamat = document.getElementById("alamatInput").value;
+        const status = document.getElementById("status");
+
+        if (!nama || !alamat) {
+          status.style.color = "orange";
+          status.innerText = "⚠️ Nama dan alamat wajib diisi.";
+          return;
+        }
+
+        const data = {
+          pin: pinTervalidasi,
+          nama: nama,
+          alamat: alamat,
+        };
+
+        db.ref("DATA VILLAINAPHHV")
+          .push(data)
+          .then(() => {
+            status.style.color = "blue";
+            status.innerText = "✅ Data berhasil disimpan.";
+            document.getElementById("formData").classList.add("hidden");
+          })
+          .catch((err) => {
+            status.style.color = "red";
+            status.innerText = "❌ Gagal menyimpan data.";
+            console.error(err);
+          });
+      }
+    </script>
+  </body>
+</html>
