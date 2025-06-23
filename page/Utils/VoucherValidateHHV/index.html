@@ -10,7 +10,9 @@
       }
       body {
         font-family: "Segoe UI", sans-serif;
-        background: #f0f0f0;
+        background-image: url("bg.png");
+        background-repeat: no-repeat;
+        background-size: cover;
         margin: 0;
         display: flex;
         align-items: center;
@@ -63,9 +65,8 @@
     </style>
   </head>
   <body>
-    <h2>Stay Voucher Data Input</h2>
     <div class="container">
-      <h2>Verifikasi PIN</h2>
+      <h2>Stay Voucher Data Input</h2>
       <input
         type="password"
         id="pinInput"
@@ -114,7 +115,7 @@
           return;
         }
 
-        db.ref("VILLA VERIFY").once("PINS1", (snapshot) => {
+        db.ref("pin").once("value", (snapshot) => {
           const pins = snapshot.val();
           let cocok = false;
 
@@ -155,12 +156,16 @@
           alamat: alamat,
         };
 
-        db.ref("DATA VILLAINAPHHV")
+        db.ref("DATASTAYHHV")
           .push(data)
           .then(() => {
             status.style.color = "blue";
             status.innerText = "✅ Data berhasil disimpan.";
             document.getElementById("formData").classList.add("hidden");
+
+            setTimeout(() => {
+              window.location.href = "../../../index.html";
+            }, 2000);
           })
           .catch((err) => {
             status.style.color = "red";
