@@ -1,39 +1,44 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-app.js";
-import { getAnalytics } from "https://www.gstatic.com/firebasejs/11.9.0/firebase-analytics.js";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js";
+import {
+  getDatabase,
+  ref,
+  get,
+  child,
+} from "https://www.gstatic.com/firebasejs/11.10.0/firebase-database.js";
 const firebaseConfig = {
-  apiKey: "AIzaSyBp-gjRuIgRg4r8hi7BGTNXQYgvkNqVIMQ",
-  authDomain: "toolshgi.firebaseapp.com",
-  databaseURL: "https://toolshgi-default-rtdb.firebaseio.com",
-  projectId: "toolshgi",
-  storageBucket: "toolshgi.firebasestorage.app",
-  messagingSenderId: "460824198114",
-  appId: "1:460824198114:web:85bbf8be227011550317bb",
-  measurementId: "G-FCQE589D8K",
+  apiKey: "AIzaSyB3wx-ICJDVQDtsczfKPsSDR-YfgnpCNjU",
+  authDomain: "harmonigrupindonesia-cbb95.firebaseapp.com",
+  databaseURL:
+    "https://harmonigrupindonesia-cbb95-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "harmonigrupindonesia-cbb95",
+  storageBucket: "harmonigrupindonesia-cbb95.firebasestorage.app",
+  messagingSenderId: "443823197909",
+  appId: "1:443823197909:web:509e0875e811070ccf5c5c",
+  measurementId: "G-Q6CCD0B6QP",
 };
-firebase.initializeApp(firebaseConfig);
-const db = firebase.database();
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-db.ref("SITEPLAN HGI")
-  .once("value")
+const dbRef = ref(db);
+
+get(child(dbRef, "PROSIT/Harmoni Horizon Valley"))
   .then((snapshot) => {
-    const data = snapshot.val();
-    for (const key in data) {
-      const item = data[key];
-      const bf = parseInt(item.bf) || 0;
-      const dp = parseInt(item.dp) || 0;
-      const ls = parseInt(item.ls) || 0;
-      const jml = parseInt(item.jml) || 0;
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+      const bf = parseInt(data.bf) || 0;
+      const dp = parseInt(data.dp) || 0;
+      const ls = parseInt(data.ls) || 0;
+      const jml = parseInt(data.jml) || 0;
+
       const ttl = bf + dp + ls;
       const ss = jml - ttl;
 
       document.getElementById("sit-ttl").innerText = ttl;
       document.getElementById("sit-ss").innerText = ss;
+    } else {
+      console.log("Data tidak ditemukan");
     }
+  })
+  .catch((error) => {
+    console.error("Error saat mengambil data:", error);
   });

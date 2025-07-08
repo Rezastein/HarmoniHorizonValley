@@ -184,6 +184,40 @@ video-container-yt {
   border-radius: 10px;
 }
 
+.container-sosmed {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 10px;
+}
+
+.container-sosmed .card {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(90deg, #093300, #54a55c);
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(4, 83, 14, 0.5);
+  flex: 1 1 calc(50% - 30px); /* Responsive width */
+  max-width: 300px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.container-sosmed .card img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.container-sosmed .card span {
+  font-size: 18px;
+  color: #fff;
+  margin-left: 10px;
+  flex-grow: 1;
+}
+
 .h2keunggulan h2 {
   text-align: center;
   color: #2db634;
